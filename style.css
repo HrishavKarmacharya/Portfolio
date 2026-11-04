@@ -1,0 +1,277 @@
+/* ==========================================================
+   Hrishav Karmacharya | CV styles
+   Simple, interactive styling for the semantic HTML CV
+   ========================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #fff;
+  --surface: #f4f8f5;
+  --text: #1f2328;
+  --muted: #57606a;
+  --green: #1a7f37;
+  --blue: #0b5fc5;
+  --line: #d0d7de;
+  --focus: #bf8700;
+  --on-accent: #fff;
+  --font: "Segoe UI", system-ui, -apple-system, roboto, "Helvetica Neue", arial, sans-serif;
+  --radius: 8px;
+  --ease: 0.2s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1511;
+    --surface: #18211b;
+    --text: #e6edf3;
+    --muted: #9aa7b2;
+    --green: #4ac26b;
+    --blue: #79b8ff;
+    --line: #2d3a32;
+    --focus: #e3b341;
+    --on-accent: #0f1511;
+  }
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  border-top: 4px solid var(--text);
+}
+
+p,
+ul {
+  margin: 0 0 0.75rem;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.2rem;
+}
+
+/* ---------- Links ---------- */
+a {
+  color: var(--blue);
+  text-decoration: none;
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition: background-size var(--ease), color var(--ease);
+}
+
+a:hover {
+  background-size: 100% 2px;
+}
+
+/* Keyboard focus is always visible */
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Header ---------- */
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+header > p {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+address {
+  font-style: normal;
+  color: var(--muted);
+}
+
+address p {
+  margin-bottom: 0.25rem;
+}
+
+/* ---------- Sections ---------- */
+section {
+  margin-bottom: 2.25rem;
+  scroll-margin-top: 1rem;
+}
+
+h2 {
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--green);
+  border-bottom: 1px solid var(--line);
+}
+
+h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--blue);
+}
+
+/* ---------- Skills as interactive chips ---------- */
+#skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+#skills li {
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: default;
+  transition: transform var(--ease), background var(--ease),
+    color var(--ease), border-color var(--ease);
+}
+
+#skills li:hover {
+  color: var(--on-accent);
+  background: var(--green);
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+/* ---------- Education and experience entries ---------- */
+article {
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid transparent;
+  border-radius: var(--radius);
+  transition: background var(--ease), border-color var(--ease),
+    transform var(--ease);
+}
+
+article:hover,
+article:focus-within {
+  background: var(--surface);
+  border-left-color: var(--green);
+  transform: translateX(4px);
+}
+
+article > p:first-of-type {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Profile links as buttons ---------- */
+#links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+#links a {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  color: var(--blue);
+  background-image: none;
+  border: 1px solid var(--blue);
+  border-radius: var(--radius);
+  transition: background var(--ease), color var(--ease), transform var(--ease);
+}
+
+#links a:hover {
+  color: var(--on-accent);
+  background: var(--blue);
+  transform: translateY(-2px);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  padding-top: 1rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Small screens ---------- */
+@media (width <= 480px) {
+  body {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  article:hover,
+  article:focus-within {
+    transform: none;
+  }
+}
+
+/* ---------- Respect reduced-motion settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+  #skills li:hover,
+  #links a:hover,
+  article:hover,
+  article:focus-within {
+    transform: none;
+  }
+}
+
+/* ---------- Print: clean black-on-white CV ---------- */
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+    color: #000;
+    background: #fff;
+    border-top: 0;
+  }
+
+  article:hover {
+    background: none;
+    transform: none;
+  }
+
+  a {
+    color: #000;
+    background-image: none;
+  }
+}
